@@ -1,15 +1,21 @@
-﻿Console.Clear();
+﻿//Напишите программу, которая перевернёт одномерный массив 
+//(последний элемент будет на первом месте, а первый - на последнем и т.д.)
+
+Console.Clear();
 
 Console.Write("Укажите длину массива: ");
 int number = int.Parse(Console.ReadLine()!);
 
-int[] OArray = Array1(number);
-int[] FArray = Array2(number);
+int[] array = FirstArray(number);
+Console.WriteLine(String.Join(", ", array));
 
-Console.WriteLine($"[{String.Join(", ", OArray)}]");
-Console.WriteLine($"[{String.Join(", ", FArray)}]");
+// int[] reversArray = reversArrayTwo(array);
+// Console.WriteLine(String.Join(", ", reversArray));
 
-int[] Array1 (int N)
+reversArrayOne(array);
+Console.WriteLine(String.Join(", ", array));
+
+int[] FirstArray (int N)
 {
     int[] result = new int[N];
     for (int i = 0; i < N; i++)
@@ -19,18 +25,25 @@ int[] Array1 (int N)
     return result;
 }
 
-int[] Array2 (int N)
+void reversArrayOne (int[] N)
 {
-    int[] result = OArray;
-    int i = 0;
-    int j = OArray.Length - 1;
-    int b = result[i];
-    for (; i < OArray.Length / 2; i++)
+    int j = N.Length - 1;
+    for (int i = 0; i < N.Length / 2; i++)
     {
-        b = result[i];
-        result[i] = result[j];
-        result[j] = b;
+        int b = N[i];
+        N[i] = N[j];
+        N[j] = b;
         j = j - 1;
     }
-    return result;
 }
+
+// int[] reversArrayTwo (int[] N)
+// {
+//     int[] result = new int[N.Length];
+//     int j = number - 1;
+//     for (int i = 0; i < N.Length; i++)
+//     {
+//         result[i] = N[N.Length - 1 - i];
+//     }
+//     return result;
+// }
